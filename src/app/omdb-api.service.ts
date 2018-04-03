@@ -12,9 +12,4 @@ export class OmdbApiService {
         const url = 'http://www.omdbapi.com/?apikey=' + this.apiKey + '&s=' + text;
         return this.http.get(url);
     }
-
-    searchMovies2(text: string): Observable<any> {
-        const url = 'http://www.omdbapi.com/?apikey=' + this.apiKey + '&s=' + text;
-        return this.http.get(url);
-    }
 }

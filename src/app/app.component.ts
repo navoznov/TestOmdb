@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   title = 'app';
 
   movies: Movie[];
+  selectedMovie: Movie;
 
   constructor(private moviesService: OmdbApiService) {
     this.movies = [];
@@ -27,5 +28,10 @@ export class AppComponent implements OnInit {
       console.log(this.movies);
       console.log( this.movies[0] instanceof Movie ? 'Да' : 'Нет');
     });
+  }
+
+  selectMovie(movie: Movie): void {
+    this.selectedMovie = movie;
+    console.log(`Выбран фильм id=${movie.id}`);
   }
 }
