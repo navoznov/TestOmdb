@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from './movie';
 import { OmdbApiService } from './omdb-api.service';
+import { OmdbMovieCreator } from './omdb-movie-creator';
+import { IMovieCreator } from './IMovieCreator';
 
 @Component({
   selector: 'app-root',
@@ -24,9 +26,12 @@ export class AppComponent implements OnInit {
 
   search(text: string): void {
     this.moviesService.searchMovies(text).subscribe(movies => {
-      this.movies = (movies.Search || []).map(x => new Movie(x.imdbID, x.Title));
+      const  creator: IMovieCreator = new OmdbMovieCreator();
+      console.dir(creator);
+      this.movies = (movies.Search || []).map(x => creator.create(x));
       console.log(this.movies);
-      console.log( this.movies[0] instanceof Movie ? 'Да' : 'Нет');
+
+      this.selectedMovie = null;
     });
   }
 

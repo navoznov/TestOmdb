@@ -5,11 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { OmdbApiService } from './omdb-api.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MovieInfoComponent
   ],
   imports: [
     BrowserModule,

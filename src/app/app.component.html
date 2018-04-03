@@ -9,10 +9,12 @@
 <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
 
 <ul class="search-result">
-  <li *ngFor="let movie of movies" (click)="selectMovie(movie)" >
-      {{movie.name}}
+  <li *ngFor="let movie of movies" (click)="selectMovie(movie)">
+      {{movie.title}}
   </li>
 </ul>
 <span *ngIf="!movies.length">Фильмы не найдены</span>
 
-<div *ngIf="selectedMovie">Фильм выбран</div>
+<div *ngIf="selectedMovie">
+  <app-movie-info [movie]="selectedMovie"></app-movie-info>
+</div>
